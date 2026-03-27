@@ -156,21 +156,3 @@ Snow 분야의 핵심 다운로드 허브는 [SnowFormer GitHub](https://github.
 | **WeatherBench (IR)** | Guan et al., "WeatherBench: A Real-World Benchmark Dataset for All-in-One Adverse Weather Image Restoration," ACM MM 2025 (arXiv:2509.11642) | Rain, Snow, Haze | **Real** | 대규모 (주간+야간) | 물리적 날씨 생성기(haze/rain/snow generator)와 Sony ILCE-7M3 카메라로 제어 환경에서 촬영 | [GitHub](https://github.com/guanqiyuan/WeatherBench) |
 
 **AllWeather**는 TransWeather(CVPR 2022) 이후 WeatherDiffusion, WeatherFormer, GridFormer, PromptIR 등 수십 편의 all-in-one 논문이 동일하게 사용하는 사실상의 표준 multi-weather 학습셋이다. **CDD-11**은 단순 혼합이 아닌 동시 복합 열화를 제공한다는 점에서 차별화된다. **WeatherStream**은 **17만 쌍 이상**의 real-world 데이터를 보유한 최대 규모 실사 multi-weather 데이터셋이다.
-
----
-
-## 데이터셋 선택 가이드와 실무 권장사항
-
-연구 목적에 따른 데이터셋 선택은 다음 기준으로 판단하는 것이 효과적이다.
-
-**대규모 학습에 적합한 데이터셋**은 Rain13k(~13,700쌍), RESIDE-OTS(~31만), Snow100K(10만), SID(~5,000 RAW), WeatherStream(17만+)이다. 이들은 딥러닝 모델 학습에 충분한 규모를 제공한다.
-
-**Real-world 일반화 성능 검증**에는 GT-RAIN, LHP-Rain, RealRain-1k(비), LMHaze(안개), WeatherStream(복합), SID/SMID/SDSD(저조도)가 핵심이다. 합성 데이터로 학습 후 이들 real 데이터셋에서 평가하는 것이 최근 표준 프로토콜이다.
-
-**All-in-one 모델 학습**에는 AllWeather 또는 CDD-11이 즉시 사용 가능하다. AllWeather는 기존 논문과의 공정 비교에, CDD-11은 복합 열화 시나리오 연구에 각각 적합하다.
-
-다운로드 접근성 측면에서 **Baidu Pan 전용** 데이터셋(Haze4K, LSRW, RealSnow 등)은 중국 외 지역에서 접근이 어려울 수 있다. 대안으로 Google Drive·Kaggle·Hugging Face 미러를 먼저 확인하거나, 동일 용도의 다른 데이터셋을 선택하는 것이 실용적이다.
-
-## 결론
-
-이 조사에서 확인한 **즉시 다운로드 가능한 paired 학습 데이터셋**은 Rain 21개, Fog/Haze 14개(RESIDE 5서브셋 포함), Snow 9개, Low-light 16개, Multi-weather 5개로 총 약 **60여 개**에 달한다. 핵심적 발견은 세 가지다. 첫째, 2022년 이후 real-world paired 데이터셋이 급증하여(GT-RAIN, LMHaze, WeatherStream, WeatherBench 등) 합성-실사 간 도메인 갭 문제를 직접 해결할 수 있게 되었다. 둘째, CDD-11과 같은 **복합 열화** 데이터셋의 등장은 단일 악천후 모델에서 통합 복원 모델로의 패러다임 전환을 가속하고 있다. 셋째, 대부분의 데이터셋이 GitHub·Google Drive를 통해 공개되어 있어 재현성이 높지만, Baidu Pan 전용이나 링크 만료 등의 문제가 일부 존재하므로 연구 착수 전 다운로드 가능 여부를 반드시 재확인해야 한다.
